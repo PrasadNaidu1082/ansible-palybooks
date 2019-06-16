@@ -1,0 +1,19 @@
+--
+ -name:terminate ec2 instance
+  hosts: localhost
+  connection: local  
+
+  tasks:
+    -name: terminate ec2
+     ec2:
+        instance_type:t2.micro
+        key_name: Linux key
+        image: ami-0c6b1d09930fac512
+        region: us-east-1
+        group: default
+        count:2
+        vpc_subnet_id: subnet-f3b331dd 
+        instance_initiated_shutdown_behavior: terminate
+        wait: yes
+        assign_public_ip: yes  
+ 
